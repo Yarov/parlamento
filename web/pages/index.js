@@ -112,6 +112,7 @@ export default class PageHome extends Component {
               <th>Email</th>
               <th>Distrito / Circunscripción</th>
               <th>Entidad</th>
+              <th>Partido</th>
             </tr>
           </thead>
           <tbody>
@@ -119,12 +120,13 @@ export default class PageHome extends Component {
               diputados.map(diputado => (
                 <tr key={diputado.id}>
                   <td>
-                    <img width="80" src={diputado.image} />
+                    <img width="40" style={{ borderRadius: '50%'}}src={diputado.image} />
                   </td>
                   <td>{diputado.name}</td>
                   <td>{diputado.email}</td>
                   <td>{diputado.distrit}</td>
                   <td>{diputado.entidad.name}</td>
+                  <td>{diputado.partido.name}</td>
                 </tr>
               ))
             }

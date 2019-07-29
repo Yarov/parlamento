@@ -21,7 +21,7 @@ class Partido(TimestampedModel):
     tipot = models.IntegerField()
     
     def __str__(self):
-        return '%s %s', (tipot, name)
+        return self.name
 
 
 class Diputado(TimestampedModel):
