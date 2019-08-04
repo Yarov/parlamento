@@ -4,10 +4,6 @@ import Link from 'next/link'
 import '../styles/styles.sass'
 
 export default  class Layout extends Component {
-
-  componentDidMount() {
-    console.log(this.props)
-  }
   render(){
     const {children} = this.props
     return (

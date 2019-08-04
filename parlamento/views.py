@@ -6,6 +6,7 @@ from parlamento.serializers import DiputadoSerializer
 class DipudatoView(viewsets.ModelViewSet):
     queryset = Diputado.objects.all()
     serializer_class = DiputadoSerializer
+    lookup_field = 'slug'
     filter_backends = [filters.SearchFilter]
     search_fields = ['name', 'email']
     filterset_fields = ['partido']

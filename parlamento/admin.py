@@ -1,10 +1,13 @@
 from django.contrib import admin
-from parlamento.models import Diputado, Entidad, Partido
+from parlamento.models import Diputado, Entidad, Partido, Iniciativa
 from django.utils.html import format_html
 
 # Register your models here.
 
 
+@admin.register(Iniciativa)
+class IniciativaAdmin(admin.ModelAdmin):
+    list_display = ['sinopsis']
 @admin.register(Entidad, Partido)
 class PersonAdmin(admin.ModelAdmin):
     list_display = ['name']

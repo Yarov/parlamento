@@ -3,7 +3,7 @@ import queryString from 'query-string'
 import Layout from '../components/layout'
 import axios from 'axios'
 import ReactPaginate from 'react-paginate'
-
+import Router from 'next/router';
 export default class PageHome extends Component {
 
   constructor(props) {
@@ -18,14 +18,17 @@ export default class PageHome extends Component {
     }
   }
   getData() {
-    const url = 'http://localhost:8000/api/diputado'
+    const url = 'http://localhost:8000/api/diputados/'
     const { query } = this.state
     axios.get(url, {
       params: {
         ...query
       }
     }).then(({ data }) => {
-      console.log(data)
+      Router.push({
+        pathname: '/',
+        query
+      });
       this.setState({ diputados: data.results, total: data.count })
     })
   }
@@ -48,7 +51,7 @@ export default class PageHome extends Component {
     })
   }
   render() {
-    const { diputados, total, query: { search } } = this.state
+    const { diputados, total, query: { search, page} } = this.state
     return (
       <Layout>
         <nav className="level">
@@ -126,7 +129,7 @@ export default class PageHome extends Component {
                   <td>{diputado.email}</td>
                   <td>{diputado.distrit}</td>
                   <td>{diputado.entidad.name}</td>
-                  <td>{diputado.partido.name}</td>
+                  <td><img width="35" src={diputado.partido.image} alt={diputado.partido.name}/></td>
                 </tr>
               ))
             }
